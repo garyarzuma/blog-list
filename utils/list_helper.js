@@ -16,7 +16,11 @@ const mostLiked = (blogs) => {
     blogs.forEach( (blog) => {
         if (blog.likes >= max.likes) max = blog  
     })
-    return max 
+    return maxFiltered = {
+        title: max.title,
+        author: max.author,
+        likes: max.likes,
+    }
 }
 
 
