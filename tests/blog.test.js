@@ -101,3 +101,21 @@ describe('most authored', () => {
       })
   })
 })
+
+describe('most liked author', () => {
+  test(' for all blog posts', () => {
+    expect(listHelper.mostLikedAuthor(blogs)).toEqual({
+      author: "Edsger W. Dijkstra",
+      likes: 27,
+    })
+  })
+
+  emptyBlog = [];
+
+  test(' 0 for empty blog array', () => {
+    expect(listHelper.mostLikedAuthor(emptyBlog)).toEqual({
+      "author": "None",
+      "likes": 0
+      })
+  })
+})
