@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8"
+  },
+  "name": "blog-list",
+  "description": "Blog list application using MERN stack that allows users to save information about interesting blogs they have stumbled across on the internet. For each listed blog uisers can save the author, title, url, and amount of upvotes from users of the application.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js -L",
+    "logs:prod": "heroku logs --tail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garyarzuma/blog-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/garyarzuma/blog-list/issues"
+  },
+  "homepage": "https://github.com/garyarzuma/blog-list#readme"
+}
