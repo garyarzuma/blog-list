@@ -30,12 +30,16 @@ describe('when there is initially some blogs saved', () => {
   
       const author = response.body.map(r => r.author)
   
-      expect(author).toContain(
-        'Michael Chan'
-      )
+      expect(author).toContain('Michael Chan')
+    })
+
+    test('id is returned not as _id', async () => {
+        const response = await api.get('/api/blogs')
+        expect(response.body[0].id).toBeDefined()
     })
   })
 
+  
 afterAll(() => {
   mongoose.connection.close()
 })
