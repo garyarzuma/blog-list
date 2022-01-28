@@ -27,7 +27,7 @@ const blogs = [
   {
     _id: "5a422b891b54a676234d17fa",
     title: "First class tests",
-    author: "Robert C. Martin",
+    author: "Edsger W. Dijkstra",
     url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
     likes: 10,
     __v: 0
@@ -80,5 +80,42 @@ describe('most liked', () => {
 
   test(' 0 likes for empty blog array', () => {
     expect(listHelper.mostLiked(emptyBlog)).toEqual({"likes": 0})
+  })
+})
+
+
+describe('most authored', () => {
+  test(' most authored blog posts for all blog posts', () => {
+    expect(listHelper.mostBlogs(blogs)).toEqual({
+      author: "Edsger W. Dijkstra",
+      blogs: 3,
+    })
+  })
+
+  emptyBlog = [];
+
+  test(' 0 for empty blog array', () => {
+    expect(listHelper.mostBlogs(emptyBlog)).toEqual({
+      "author": "None",
+       "blogs": 0
+      })
+  })
+})
+
+describe('most liked author', () => {
+  test(' for all blog posts', () => {
+    expect(listHelper.mostLikedAuthor(blogs)).toEqual({
+      author: "Edsger W. Dijkstra",
+      likes: 27,
+    })
+  })
+
+  emptyBlog = [];
+
+  test(' 0 for empty blog array', () => {
+    expect(listHelper.mostLikedAuthor(emptyBlog)).toEqual({
+      "author": "None",
+      "likes": 0
+      })
   })
 })
