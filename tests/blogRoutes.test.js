@@ -39,7 +39,25 @@ describe('when there is initially some blogs saved', () => {
     })
   })
 
-  
+  describe('when a blog is added', () => {
+    test('blog count increases by 1', async () => {
+      const newBlog = {
+        title: "How To Add a New Blog",
+        author: "Gary Arzumanyan",
+        url: "https://blogsRus.com/",
+        likes: 79,
+      }
+      const curLength = await helper.blogsInDb()
+      await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+      const endLength = await helper.blogsInDb()
+      expect(endLength.length).toBe(curLength.length+1)
+      })    
+  })
+
 afterAll(() => {
   mongoose.connection.close()
 })
