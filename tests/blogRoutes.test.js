@@ -111,6 +111,22 @@ describe('when a blog is deleted', () => {
   }) 
 })
 
+describe('when a blog is updated', () => {
+  test('like count increases by 1', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = {...blogsAtStart[0]}
+
+    blogToUpdate.likes++
+
+    await api
+      .put(`/api/blogs/${blogToUpdate.id}`)
+      .send(blogToUpdate)
+
+    const blogAtEnd = await helper.blogsInDb()
+    expect(blogAtEnd[0].likes).toBe(blogsAtStart[0].likes + 1)
+  }) 
+})
+
 afterAll(() => {
   mongoose.connection.close()
 })
