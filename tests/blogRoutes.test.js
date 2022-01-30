@@ -82,8 +82,21 @@ describe('when there is initially some blogs saved', () => {
       .send(newBlog)
       .expect(400)
       .expect('Content-Type', /application\/json/)
+  })
+
+  test('blog added without url returns with 400 Bad Request', async () => {
+    const newBlog = {
+      title: 'I have no url',
+      author: "Gary Arzumanyan",
+    }
+    const response = await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+  })
 })
-})
+
 afterAll(() => {
   mongoose.connection.close()
 })
