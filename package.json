@@ -1,11 +1,13 @@
 {
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "express-async-errors": "^3.1.1",
     "lodash": "^4.17.21",
-    "mongoose": "^6.1.8"
+    "mongoose": "^6.1.8",
+    "mongoose-unique-validator": "^2.0.1"
   },
   "name": "blog-list",
   "description": "Blog list application using MERN stack that allows users to save information about interesting blogs they have stumbled across on the internet. For each listed blog uisers can save the author, title, url, and amount of upvotes from users of the application.",
