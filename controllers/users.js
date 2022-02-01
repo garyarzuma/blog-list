@@ -5,6 +5,11 @@ const User = require('../models/user')
 usersRouter.post('/', async (request, response) => {
   const body = request.body
 
+//Error validation for password done here because mongoose only gets the hash
+  if (body.password.length < 8) {
+    return response.status(400).json({ error: 'Password too short! Must be at least 8 characters.' })
+  }
+
   const saltRounds = 10
   const passwordHash = await bcrypt.hash(body.password, saltRounds)
 
