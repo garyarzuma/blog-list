@@ -30,9 +30,8 @@ blogRouter.post('/', middleware.userExtractor, async (request, response) => {
 blogRouter.delete('/:id',middleware.userExtractor, async (request, response) => {
   const user = request.user
   const blog = await Blog.findById(request.params.id)
-
   if(blog.user.toString() !== user._id.toString()) {
-    return response.status(401).json({error: 'user is not authorized to delete this blog'})
+   return response.status(401).json({error: 'user is not authorized to delete this blog'})
   }
 
   await Blog.findByIdAndRemove(request.params.id)
