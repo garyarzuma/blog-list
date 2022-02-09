@@ -11,19 +11,21 @@ blogRouter.get('/', async (request, response) => {
   
 blogRouter.post('/', middleware.userExtractor, async (request, response) => {
     const body = request.body
-    const user = request.user
+    const user1 = request.user
 
     const blog = new Blog({
       title: body.title,
       author: body.author,
       url:  body.url,
       likes: body.likes,
-      user: user._id
+      user: user1._id
     })
 
-    const result = await blog.save()
-    user.blogs = user.blogs.concat(result._id)
-    await user.save()
+    const test = await blog.save()
+    const result = await test.populate('user',{username: 1, name: 1})
+
+    user1.blogs = user1.blogs.concat(result._id)
+    await user1.save()
     response.status(201).json(result)
 })
 
